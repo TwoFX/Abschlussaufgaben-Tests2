@@ -737,6 +737,18 @@ public class MatchThreeBoardTest {
         }
         assertEquals(expected, changed);
     }
+
+    @Test
+    public void disallowNullTokenTest()
+    {
+        HashSet<Token> tokens = new HashSet<Token>();
+        tokens.add(new Token("a"));
+        tokens.add(null);
+        tokens.add(new Token("b"));
+
+        exception.expect(IllegalArgumentException.class);
+        new MatchThreeBoard(tokens, 2, 2);
+    }
 }
 
 
