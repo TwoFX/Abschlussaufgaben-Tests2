@@ -1,6 +1,6 @@
 /*
  * MatchThreeBoardTest.java
- * Copyright (c) 2017 Markus Himmel
+ * Copyright (c) 2017 Markus Himmel and others
  * This file is distributed under the terms of the MIT license.
  */
 
