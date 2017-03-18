@@ -671,12 +671,16 @@ public class MatchThreeBoardTest {
 
         Set<Position> expected = new HashSet<Position>();
 
-        expected.add(Position.at(1, 2));
+        expected.add(Position.at(0, 0));
         expected.add(Position.at(0, 3));
-        expected.add(Position.at(2, 3));
-        expected.add(Position.at(3, 3));
         expected.add(Position.at(0, 4));
+        expected.add(Position.at(1, 1));
+        expected.add(Position.at(1, 2));
+        expected.add(Position.at(2, 0));
+        expected.add(Position.at(2, 3));
         expected.add(Position.at(2, 4));
+        expected.add(Position.at(3, 1));
+        expected.add(Position.at(3, 3));
         expected.add(Position.at(3, 4));
         assertEquals(expected, changed);
     }
@@ -696,7 +700,7 @@ public class MatchThreeBoardTest {
     public void moveTokensToBottom3Test()
     {
         // Could go up to 5000 if a proper hash on position was used.
-        int N = 3000;
+        int N = 2000;
         MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), N, N);
 
         for (int i = 0; i < N; i++)
@@ -719,6 +723,8 @@ public class MatchThreeBoardTest {
             {
                 if (j < N / 2)
                 {
+                    if ((i + j) % 2 == 0)
+                        expected.add(Position.at(i, j));
                     assertEquals(null, board.getTokenAt(Position.at(i, j)));
                 }
                 else
