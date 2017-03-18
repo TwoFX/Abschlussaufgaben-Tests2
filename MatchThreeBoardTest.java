@@ -6,6 +6,7 @@
 
 package edu.kit.informatik.matchthree.tests;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -120,7 +121,63 @@ public class MatchThreeBoardTest {
         exception.expect(IllegalArgumentException.class);
         new MatchThreeBoard(null, "  ;  ");
     }
+    
+    @Test
+    public void nullPosition1Test()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        exception.expect(IllegalArgumentException.class);
+        board.containsPosition(null);
+    }
 
+    @Test
+    public void nullPosition2Test()
+    {
+        exception.expect(IllegalArgumentException.class);
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        board.getTokenAt(null);
+    }
+    
+    @Test
+    public void nullPosition3Test()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        exception.expect(IllegalArgumentException.class);
+        board.setTokenAt(null, null);
+    }
+    
+    @Test
+    public void nullPosition4Test()
+    {
+        exception.expect(IllegalArgumentException.class);
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        board.swapTokens(null, Position.at(0, 0));
+    }
+    
+    @Test
+    public void nullPosition5Test()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        exception.expect(IllegalArgumentException.class);
+        board.swapTokens(Position.at(0, 0), null);
+    }
+    
+    @Test
+    public void nullPosition6Test()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        exception.expect(IllegalArgumentException.class);
+        board.removeTokensAt(null);
+    }
+    
+    @Test
+    public void nullPosition7Test()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        exception.expect(IllegalArgumentException.class);
+        board.removeTokensAt(new HashSet<Position>(Arrays.asList(Position.at(0, 0), null)));
+    }
+    
     @Test
     public void invalidTokens1Test()
     {
