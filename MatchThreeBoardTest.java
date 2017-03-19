@@ -28,6 +28,7 @@ import edu.kit.informatik.matchthree.framework.Position;
 import edu.kit.informatik.matchthree.framework.Token;
 import edu.kit.informatik.matchthree.framework.interfaces.Board;
 import edu.kit.informatik.matchthree.framework.exceptions.BoardDimensionException;
+import edu.kit.informatik.matchthree.framework.exceptions.IllegalTokenException;
 import edu.kit.informatik.matchthree.framework.exceptions.NoFillingStrategyException;
 import edu.kit.informatik.matchthree.framework.exceptions.TokenStringParseException;
 
@@ -748,6 +749,14 @@ public class MatchThreeBoardTest {
 
         exception.expect(IllegalArgumentException.class);
         new MatchThreeBoard(tokens, 2, 2);
+    }
+
+    @Test
+    public void setToIllegalTokenTest()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 2, 2);
+        exception.expect(IllegalTokenException.class);
+        board.setTokenAt(Position.at(0, 0), new Token("c"));
     }
 }
 
