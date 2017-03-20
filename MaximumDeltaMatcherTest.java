@@ -292,6 +292,31 @@ public class MaximumDeltaMatcherTest
         new MaximumDeltaMatcher(new HashSet<Delta>());
     }
 
+    @Test(timeout = 5000)
+    public void performance1Test()
+    {
+        int N = 1000000;
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), N, 2);
+
+        Set<Delta> deltas = new HashSet<Delta>();
+        deltas.add(Delta.dxy(1, 0));
+
+        Set<Set<Position>> expected = new HashSet<Set<Position>>();
+        Set<Position> match1 = new HashSet<Position>();
+
+        for (int i = 0; i < N; i++)
+        {
+            board.setTokenAt(Position.at(i, 0), new Token("a"));
+            match1.add(Position.at(i, 0));
+        }
+        expected.add(match1);
+
+        Set<Set<Position>> got = new MaximumDeltaMatcher(deltas).match(board,
+            Position.at(0, 0));
+
+        assertEquals(expected, got);
+    }
+
 }
 
 // vim: set expandtab:
