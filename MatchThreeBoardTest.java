@@ -686,7 +686,6 @@ public class MatchThreeBoardTest {
         assertEquals(expected, changed);
     }
 
-    @Ignore
     @Test(timeout=15000)
     public void moveTokensToBottom2Test()
     {
@@ -698,7 +697,6 @@ public class MatchThreeBoardTest {
         assertTrue(changed.isEmpty());
     }
 
-    @Ignore
     @Test(timeout=25000)
     public void moveTokensToBottom3Test()
     {
