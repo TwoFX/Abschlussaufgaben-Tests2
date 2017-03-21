@@ -317,6 +317,19 @@ public class MaximumDeltaMatcherTest
         assertEquals(expected, got);
     }
 
+    @Test
+    public void nullStartTest()
+    {
+        MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 4, 4);
+        Set<Delta> deltas = new HashSet<Delta>();
+        deltas.add(Delta.dxy(0, 1));
+        deltas.add(Delta.dxy(1, 0));
+        MaximumDeltaMatcher matcher = new MaximumDeltaMatcher(deltas);
+
+        exception.expect(IllegalArgumentException.class);
+        matcher.match(board, Position.at(0, 0));
+    }
+
 }
 
 // vim: set expandtab:
