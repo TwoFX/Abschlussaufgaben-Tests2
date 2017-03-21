@@ -705,7 +705,7 @@ public class MatchThreeBoardTest {
     public void moveTokensToBottom3Test()
     {
         // Could go up to 5000 if a proper hash on position was used.
-        int N = 2000;
+        int N = 1000;
         MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), N, N);
 
         for (int i = 0; i < N; i++)
