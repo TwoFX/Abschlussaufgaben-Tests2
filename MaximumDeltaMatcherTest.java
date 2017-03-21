@@ -245,7 +245,7 @@ public class MaximumDeltaMatcherTest
         deltas.add(null);
         deltas.add(Delta.dxy(-1, 1));
 
-        exception.expect(IllegalArgumentException.class);
+        exception.expect(RuntimeException.class);
         new MaximumDeltaMatcher(deltas);
     }
 
@@ -281,7 +281,7 @@ public class MaximumDeltaMatcherTest
     @Test
     public void nullDeltasTest()
     {
-        exception.expect(IllegalArgumentException.class);
+        exception.expect(RuntimeException.class);
         new MaximumDeltaMatcher(null);
     }
 
