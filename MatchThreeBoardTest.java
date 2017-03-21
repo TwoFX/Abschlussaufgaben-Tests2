@@ -691,9 +691,13 @@ public class MatchThreeBoardTest {
     {
         MatchThreeBoard board = new MatchThreeBoard(Token.set("ab"), 10000, 10000);
         Set<Position> changed = board.moveTokensToBottom();
-        String expected = String.join(";", Collections.nCopies(10000,
-            String.join("", Collections.nCopies(10000, " "))));
-        assertEquals(expected, board.toTokenString());
+        for (int i = 0; i < 10000; i++)
+        {
+            for (int j = 0; j < 10000; j++)
+            {
+                assertEquals(null, board.getTokenAt(Position.at(i, j)));
+            }
+        }
         assertTrue(changed.isEmpty());
     }
 
