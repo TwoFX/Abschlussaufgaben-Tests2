@@ -6,10 +6,12 @@
 
 package edu.kit.informatik.matchthree.tests;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -326,8 +328,12 @@ public class MaximumDeltaMatcherTest
         deltas.add(Delta.dxy(1, 0));
         MaximumDeltaMatcher matcher = new MaximumDeltaMatcher(deltas);
 
-        exception.expect(IllegalArgumentException.class);
-        matcher.match(board, Position.at(0, 0));
+        Set<Set<Position>> it = matcher.match(board, Position.at(0, 0));
+        assertTrue(it.size() <= 1);
+        if (it.size() == 1)
+        {
+            assertTrue(it.contains(Collections.emptySet()));
+        }
     }
 
 }
